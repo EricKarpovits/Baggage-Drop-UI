@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
 import math
 from .models import *
-from capstone.utils import render_to_pdf, createticket
+from baggage.utils import render_to_pdf, createticket
 
 
 #Fee and Surcharge variable
