@@ -58,7 +58,7 @@ class Passenger(models.Model):
     #flight = models.ForeignKey(Flight, on_delete=models.CASCADE, related_name="passengers")
 
     def __str__(self):
-        return f"Passenger: {self.first_name} {self.last_name}, {self.gender}"
+        return f"Passenger: {self.first_name} {self.last_name}"
 
 
 

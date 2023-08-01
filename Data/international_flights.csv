@@ -7119,3 +7119,4 @@ index,origin,destination,depart_time,depart_weekday,duration,arrival_time,arriva
 7271,YYZ,BCN,20:10:00,6,13:55:00,10:05:00,0,LH6635,LH,Lufthansa,93052,,466496
 7272,YYZ,BCN,20:10:00,4,13:55:00,10:05:00,5,LH6635,LH,Lufthansa,93052,,
 7273,YYZ,BCN,20:10:00,0,13:55:00,10:05:00,1,LH6635,LH,Lufthansa,93052,111320,
+7274,IAD,JFK,20:10:00,0,13:55:00,10:05:00,1,LH6635,LH,Lufthansa,93052,111320,

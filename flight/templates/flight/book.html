@@ -59,14 +59,77 @@
                 <div class="baggage-drop">
                     <h5>Baggage Drop</h5>
                     <hr>
-                    
+                    <div class="row contact-details-div">
+                        <div class="row form-group">
+                            <!--<div class="input-group col">
+                                <div class="input-group-prepend">
+                                    
+                                </div>
+                            </div>-->
+                            <div class="col-6 ci">
+                                Ship From
+                                <input type="text" name="text" class="form-control" placeholder="Address" value="45005 Aviation Drive Dulles, VA 20166, United States" required>
+                            </div>
+                            <div class="col-6 ci">
+                                Ship To
+                                <input type="text" name="text" class="form-control" placeholder="Address" value="725 5th Ave, New York, NY 10022, United States" required>
+                            </div>
+                            <div class="col-3 ci">
+                                <div class="carry-on">Carry On</div>
+                                <div class="plane-name">{{flight1.plane}}</div>
+                            </div>
+                            <div class="wrapper">
+                                <span class="minus">-</span>
+                                <span class="num">0</span>
+                                <span class="plus">+</span>
+                              </div>
+                              <script>
+                               const plus = document.querySelector(".plus"),
+                                minus = document.querySelector(".minus"),
+                                num = document.querySelector(".num");
+                                let a = 0
+                                plus.addEventListener("click", ()=>{
+                                  a++;
+                            
+                                  num.innerText = a;
+                                });
+                                minus.addEventListener("click", ()=>{
+                                  if(a > 0){
+                                    a--;
+                                    num.innerText = a;
+                                  }
+                                });
+                              </script>
+                              <div class="wrapperBaggage">
+                                <span class="minusBaggage">-</span>
+                                <span class="numBaggage">0</span>
+                                <span class="plusBaggage">+</span>
+                              </div>
+                              <script>
+                               const plusBaggage = document.querySelector(".plusBaggage"),
+                                minusBaggage = document.querySelector(".minusBaggage"),
+                                numBaggage = document.querySelector(".numBaggage");
+                                let aBaggage = 0
+                                plusBaggage.addEventListener("click", ()=>{
+                                  aBaggage++;
+                            
+                                  numBaggage.innerText = a;
+                                });
+                                minusBaggage.addEventListener("click", ()=>{
+                                  if(aBaggage > 0){
+                                    aBaggage--;
+                                    numBaggage.innerText = a;
+                                  }
+                                });
+                              </script>
+                        </div>
+                    </div>
                 </div>
                 <div class="traveller-details">
                     <div class="traveller-head">
                         <h5>Contact Information</h5>
                     </div>
                     <hr>
-                    
                     <div class="row contact-details-div">
                         <div class="row form-group">
                             <!--<div class="input-group col">
@@ -335,7 +398,7 @@
                             </div>
                         </div>
                         
-                        <!-- <div class="row form-group radio-div">
+                        <div class="row form-group radio-div">
                             <div class="form-check-inline cd">
                                 Gender: 
                             </div>
@@ -349,7 +412,7 @@
                                     <input type="radio" class="form-check-input gender" value="female">Female
                                 </label>
                             </div>
-                        </div> -->
+                        </div>
                         <button type="button" class="btn btn-primary btn-light" style="margin-right: auto;" onclick="add_traveller()">Add</button>
                     </div>
                     <hr>
@@ -397,6 +460,12 @@
                                     <input type="hidden" id="basefare" value="{% if flight2 %}{{flight1.economy_fare | add:flight2.economy_fare}}{% else %}{{flight1.economy_fare}}{% endif %}">
                                 {% endif %}
                             </div>
+                        </div>
+                        
+                        <div class="row baggage-drop-fare">
+                            <div class="baggage-drop-label">Baggage Drop Fee: </div>
+                            <div class="baggage-drop-value">$ <span>{{baggageFee}}</span></div>
+                            <input type="hidden" id="fee" value="{{baggageFee}}">
                         </div>
                         <div class="row surcharges">
                             <div class="surcharges-label">Fee & Surcharges: </div>
