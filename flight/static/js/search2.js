@@ -14,7 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
         filter_price2();
         document.querySelector(".clr-filter-div2 button").addEventListener('click', reset_filter2);
     }
+    formatCurrency();
 });
+
+function formatCurrency(){
+    document.querySelectorAll(".priceCurrency").forEach((element) => {
+        if (!isNaN(element.innerText)){
+            element.innerText = parseFloat(element.innerText).toFixed(2);
+        }
+    });
+}
 
 function flight_duration() {
     document.querySelectorAll(".flight-stops .tooltiptext").forEach(element => {

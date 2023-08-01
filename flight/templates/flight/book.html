@@ -70,58 +70,79 @@
                                 Ship From
                                 <input type="text" name="text" class="form-control" placeholder="Address" value="45005 Aviation Drive Dulles, VA 20166, United States" required>
                             </div>
-                            <div class="col-6 ci">
+                            <div class="col-6 ci" style="padding-bottom:20px">
                                 Ship To
                                 <input type="text" name="text" class="form-control" placeholder="Address" value="725 5th Ave, New York, NY 10022, United States" required>
                             </div>
-                            <div class="col-3 ci">
-                                <div class="carry-on">Carry On</div>
-                                <div class="plane-name">{{flight1.plane}}</div>
-                            </div>
-                            <div class="wrapper">
-                                <span class="minus">-</span>
-                                <span class="num">0</span>
-                                <span class="plus">+</span>
-                              </div>
-                              <script>
-                               const plus = document.querySelector(".plus"),
-                                minus = document.querySelector(".minus"),
-                                num = document.querySelector(".num");
-                                let a = 0
-                                plus.addEventListener("click", ()=>{
-                                  a++;
-                            
-                                  num.innerText = a;
-                                });
-                                minus.addEventListener("click", ()=>{
-                                  if(a > 0){
-                                    a--;
-                                    num.innerText = a;
-                                  }
-                                });
-                              </script>
-                              <div class="wrapperBaggage">
-                                <span class="minusBaggage">-</span>
-                                <span class="numBaggage">0</span>
-                                <span class="plusBaggage">+</span>
-                              </div>
-                              <script>
-                               const plusBaggage = document.querySelector(".plusBaggage"),
-                                minusBaggage = document.querySelector(".minusBaggage"),
-                                numBaggage = document.querySelector(".numBaggage");
-                                let aBaggage = 0
-                                plusBaggage.addEventListener("click", ()=>{
-                                  aBaggage++;
-                            
-                                  numBaggage.innerText = a;
-                                });
-                                minusBaggage.addEventListener("click", ()=>{
-                                  if(aBaggage > 0){
-                                    aBaggage--;
-                                    numBaggage.innerText = a;
-                                  }
-                                });
-                              </script>
+                            <table class="baggageDropTable">
+                                <tr style="text-align:center">
+                                    <th></th>
+                                    <th>Quantity</th>
+                                    <th><img src="/static/img/ups.png" style="width:75px;height:75px"></th>
+                                    <th><img src="/static/img/fedex.png" style="width:100px;height:70px"></th>
+                                </tr>
+                                <tr class="weightClass baggageCounter">
+                                    <td style="width:150px">
+                                        <div style="padding-left:15px">
+                                            <div class="brand">Carry On</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="wrapper">
+                                            <span class="minus">-</span>
+                                            <span class="num">0</span>
+                                            <span class="plus">+</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="carrier"  data-carrier="UPS">$ <span>20.00</span></div>
+                                    </td>
+                                    <td>
+                                        <div class="carrier"  data-carrier="FEDEX">$ <span>21.00</span></div>
+                                    </td>
+                                </tr>
+                                <tr class="weightClass baggageCounter">
+                                    <td style="width:150px">
+                                        <div style="padding-left:15px">
+                                            <div class="brand">Check-in</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="wrapper">
+                                            <span class="minus">-</span>
+                                            <span class="num">0</span>
+                                            <span class="plus">+</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="carrier" data-carrier="UPS">$ <span>27.00</span></div>
+                                    </td>
+                                    <td>
+                                        <div class="carrier" data-carrier="FEDEX">$ <span>25.00</span></div>
+                                    </td>
+                                </tr>
+                                <tr class="weightClass baggageCounter">
+                                    <td style="width:150px">
+                                        <div style="padding-left:15px">
+                                            <div class="brand">Oversized</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="wrapper">
+                                            <span class="minus">-</span>
+                                            <span class="num">0</span>
+                                            <span class="plus">+</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="carrier" data-carrier="UPS">$ <span>47.00</span></div>
+                                    </td>
+                                    <td>
+                                        <div class="carrier" data-carrier="FEDEX">$ <span>49.00</span></div>
+                                    </td>
+    
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -432,7 +453,7 @@
                             <div class="base-fae-label">Base Fare: </div>
                             <div class="base-fare-value">
                                 {% if seat == 'First' %}
-                                    $ <span>
+                                    $ <span class="currency">
                                         {% if flight2 %}
                                             {{flight1.first_fare | add:flight2.first_fare}}
                                         {% else %}
@@ -441,7 +462,7 @@
                                         </span>
                                     <input type="hidden" id="basefare" value="{% if flight2 %}{{flight1.first_fare | add:flight2.first_fare}}{% else %}{{flight1.first_fare}}{% endif %}">
                                 {% elif seat == 'Business' %}
-                                    $ <span>
+                                    $ <span class="currency">
                                         {% if flight2 %}
                                             {{flight1.business_fare | add:flight2.business_fare}}
                                         {% else %}
@@ -450,7 +471,7 @@
                                         </span>
                                     <input type="hidden" id="basefare" value="{% if flight2 %}{{flight1.business_fare | add:flight2.business_fare}}{% else %}{{flight1.business_fare}}{% endif %}">
                                 {% elif seat == 'Economy' %}
-                                    $ <span>
+                                    $ <span class="currency">
                                         {% if flight2 %}
                                             {{flight1.economy_fare | add:flight2.economy_fare}}
                                         {% else %}
@@ -464,12 +485,12 @@
                         
                         <div class="row baggage-drop-fare">
                             <div class="baggage-drop-label">Baggage Drop Fee: </div>
-                            <div class="baggage-drop-value">$ <span>{{baggageFee}}</span></div>
-                            <input type="hidden" id="fee" value="{{baggageFee}}">
+                            <div class="baggage-drop-value">$ <span>0.00</span></div>
+                            <input type="hidden" id="fee" value="0">
                         </div>
                         <div class="row surcharges">
                             <div class="surcharges-label">Fee & Surcharges: </div>
-                            <div class="surcharges-value">$ <span>{{fee}}</span></div>
+                            <div class="surcharges-value">$ <span class="currency">{{fee}}</span></div>
                             <input type="hidden" id="fee" value="{{fee}}">
                         </div>
                         <hr>
@@ -477,7 +498,7 @@
                             <div class="total-fare-label">Total Fare: </div>
                             <div class="total-fare-value">
                                 {% if seat == 'First' %}
-                                    $ <span>
+                                    $ <span class="currency">
                                         {% if flight2 %}
                                             {{flight1.first_fare | add:flight2.first_fare | add:fee}}
                                         {% else %}
@@ -485,7 +506,7 @@
                                         {% endif %}
                                     </span>
                                 {% elif seat == 'Business' %}
-                                    $ <span>
+                                    $ <span class="currency">
                                         {% if flight2 %}
                                             {{flight1.business_fare | add:flight2.business_fare | add:fee}}
                                         {% else %}
@@ -493,7 +514,7 @@
                                         {% endif %}
                                     </span>
                                 {% elif seat == 'Economy' %}
-                                    $ <span>
+                                    $ <span class="currency">
                                         {% if flight2 %}
                                             {{flight1.economy_fare | add:flight2.economy_fare | add:fee}}
                                         {% else %}

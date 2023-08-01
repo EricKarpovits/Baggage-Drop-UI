@@ -30,14 +30,14 @@
                         <div class="row payment-amount-div">
                             <div class="form-group">
                                 <label for="payment_amount">PAYMENT AMOUNT</label>
-                                <input type="text" class="form-control" id="payment_amount" name="fare" value="$ {{fare}}" disabled required>
+                                <input type="text" class="form-control" id="payment_amount" name="fare" value="$ 784.00" disabled required>
                             </div>
                         </div>
                         <div class="row card-no-div">
                             <div class="form-group">
                                 <label for="card_number">CARD NUMBER</label>
                                 <div class="input-group">
-                                    <input type="tel" pattern="[0-9]*" class="form-control" id="card_number" name="cardNumber" autocomplete="off" maxlength="19" placeholder="Enter card number" required> <!--onkeypress="return isNumericValue(event);"-->
+                                    <input type="tel" pattern="[0-9]*" class="form-control" id="card_number" name="cardNumber" autocomplete="off" maxlength="19" placeholder="Enter card number" required value="4140414031323132"> <!--onkeypress="return isNumericValue(event);"-->
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="basic-addon2">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-credit-card" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@
                         <div class="row card-holder-div">
                             <div class="form-group">
                                 <label for="card_holder_name">CARD HOLDER'S NAME</label>
-                                <input type="text" name="cardHolderName" class="form-control" id="cardHolderName" placeholder="Enter name" required>
+                                <input type="text" name="cardHolderName" class="form-control" id="cardHolderName" placeholder="Enter name" value="Eric Karpovits" required>
                                 <!--<small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                             </div>
                         </div>
@@ -63,7 +63,8 @@
                                     <label for="expiry_month">EXPIRY DATE</label>
                                     <div class="expiry-input-div">
                                         <div class="month-div">
-                                            <select name="expMonth" id="expiry_month" class="form-control" required>
+                                            <select name="expMonth" id="expiry_month" class="form-control" value="12" required>
+                                                <option value="12">12</option>
                                                 <option value="">Month</option>
                                                 <option value="01">01</option>
                                                 <option value="02">02</option>
@@ -76,18 +77,17 @@
                                                 <option value="09">09</option>
                                                 <option value="10">10</option>
                                                 <option value="11">11</option>
-                                                <option value="12">12</option>
                                             </select>
                                         </div>
                                         <div class="yeae-div">
                                             <select name="expYear" id="expiry_year" class="form-control" required>
+                                                <option value="2025">2025</option>
                                                 <option value="">Year</option>
                                                 <option value="2020">2020</option>
                                                 <option value="2021">2021</option>
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
-                                                <option value="2025">2025</option>
                                                 <option value="2026">2026</option>
                                                 <option value="2027">2027</option>
                                                 <option value="2028">2028</option>
@@ -126,7 +126,7 @@
                                 <div class="right-col">
                                     <div class="form-group">
                                         <label for="cvv_number">CVV CODE</label>
-                                        <input type="password" pattern="[0-9]*" class="form-control" placeholder="CVV" id="cvv_number" name="cvv" maxlength="3">    <!--onkeypress="return isNumericValue(event);"-->
+                                        <input type="password" pattern="[0-9]*" class="form-control" placeholder="CVV" id="cvv_number" name="cvv" maxlength="3" value="401">    <!--onkeypress="return isNumericValue(event);"-->
                                         <!--<small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                                     </div>
                                 </div>

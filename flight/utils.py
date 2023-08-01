@@ -49,9 +49,9 @@ def addDomesticFlights():
         arrive_week = int(data[7].strip())
         flight_no = data[8].strip()
         airline = data[10].strip()
-        economy_fare = float(data[11].strip()) if data[11].strip() else 0.0
-        business_fare = float(data[12].strip()) if data[12].strip() else 0.0
-        first_fare = float(data[13].strip()) if data[13].strip() else 0.0
+        economy_fare = data[11].strip() if data[11].strip() else 0.00
+        business_fare = float(data[12].strip()) if data[12].strip() else 0.00
+        first_fare = float(data[13].strip()) if data[13].strip() else 0.00
 
         try:
             a1 = Flight.objects.create(origin=Place.objects.get(code=origin), destination=Place.objects.get(code=destination), depart_time=depart_time , duration=duration, arrival_time=arrive_time, plane=flight_no, airline=airline, economy_fare=economy_fare, business_fare=business_fare, first_fare=first_fare)
@@ -79,9 +79,9 @@ def addInternationalFlights():
         arrive_week = int(data[7].strip())
         flight_no = data[8].strip()
         airline = data[10].strip()
-        economy_fare = float(data[11].strip()) if data[11].strip() else 0.0
-        business_fare = float(data[12].strip()) if data[12].strip() else 0.0
-        first_fare = float(data[13].strip()) if data[13].strip() else 0.0
+        economy_fare = data[11].strip() if data[11].strip() else 0.00
+        business_fare = float(data[12].strip()) if data[12].strip() else 0.00
+        first_fare = float(data[13].strip()) if data[13].strip() else 0.00
 
         try:
             a1 = Flight.objects.create(origin=Place.objects.get(code=origin), destination=Place.objects.get(code=destination), depart_time=depart_time , duration=duration, arrival_time=arrive_time, plane=flight_no, airline=airline, economy_fare=economy_fare, business_fare=business_fare, first_fare=first_fare)

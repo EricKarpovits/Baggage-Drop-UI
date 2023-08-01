@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     flight_duration();
+    document.querySelectorAll(".carrier").forEach((element) => element.addEventListener("click",(e) => selectCarrier(e)));
+    addBaggageClickEvents();
+    formatCurrency();
 });
+
+function formatCurrency(){
+    document.querySelectorAll(".currency").forEach((element) => {
+        if (!isNaN(element.innerText)){
+            element.innerText = parseFloat(element.innerText).toFixed(2);
+        }
+    });
+}
 
 function flight_duration() {
     document.querySelectorAll(".duration").forEach(element => {
@@ -8,7 +19,45 @@ function flight_duration() {
         element.innerText = time[0]+"h "+time[1]+"m";
     });
 }
+function selectCarrier(event) {
+    const carrier = event.target.getAttribute("data-carrier");
+    document.querySelectorAll(".carrier").forEach((element) => element.classList.remove("selected"));
+    document.querySelectorAll("[data-carrier='" + carrier + "']").forEach((element) => element.classList.add("selected"));
+    updatePrices();
+}
 
+function updatePrices(){
+    let baggageDropFee = 0.00;
+    document.querySelectorAll(".baggageCounter").forEach((element) => {
+        const numberOfBags = parseInt(element.querySelector(".num").innerText);
+        const costElement = element.querySelector(".carrier.selected span");
+        const costPerBag = costElement ? costElement.innerText : 0.00;
+        baggageDropFee += costPerBag * numberOfBags;
+    });
+    document.querySelector(".baggage-drop-value > span").innerText = baggageDropFee.toFixed(2);
+    const baseFareValue = parseFloat(document.querySelector(".base-fare-value span").innerText);
+    const feesSurcharge = parseFloat(document.querySelector(".surcharges-value span").innerText);
+    document.querySelector(".total-fare-value span").innerText = (baggageDropFee + baseFareValue + feesSurcharge).toFixed(2);
+}
+
+function addBaggageClickEvents() {
+    document.querySelectorAll(".baggageCounter").forEach((element) => {
+        let counter = 0;
+        let num = element.querySelector(".num");
+        element.querySelector(".plus").addEventListener("click",()=>{
+            counter++;
+            num.innerText = counter;
+            updatePrices();
+        });
+        element.querySelector(".minus").addEventListener("click", ()=>{
+            if(counter > 0){
+                counter--;
+                num.innerText = counter;
+                updatePrices();
+            }
+        });  
+    });                                 
+}
 
 function add_traveller() {
     let div = document.querySelector('.add-traveller-div');
