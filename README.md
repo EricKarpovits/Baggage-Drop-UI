@@ -1,7 +1,7 @@
 
 # BaggageDrop-UI
 
-My colleague and I created a modified JS Django UI from an existing template for BaggageDrop, an airline company's potential new baggage drop API, during a hackathon hosted by ATPCO. Our aim was to simplify the process of traveling with luggage by allowing customers to deliver their bags directly to their destination from their pickup location. With BaggageDrop, there's no need to worry about lugging your bags to the airport or retrieving them from the baggage carousel.
+My colleague and I created a modified JS Django UI from an existing template for BaggageDrop, an airline company's potential new baggage drop API, during a hackathon hosted by ATPCO. Our aim was to simplify the process of traveling with luggage by allowing customers to deliver their bags directly to their destination from their pickup location. With BaggageDrop, there's no need to worry about lugging your bags to the airport or retrieving them from the baggage carousel.  
 
 Installation Guide
 - Install python 3.9.9
